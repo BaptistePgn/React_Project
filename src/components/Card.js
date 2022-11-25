@@ -4,18 +4,26 @@ import axios from 'axios';
 const Card = ({ pokemon }) => {
     const [data, setData] = useState([])
     useEffect(() => {
-        axios.get("https://pokeapi.co/api/v2/pokemon-form/" + pokemon.name + "/")
-            .then((res) => setData(res.data.sprites))
+        axios.get(pokemon.url)
+            .then((res) => setData(res.data))
     }, [])
     return (
         <div>
-            {data.front_default != null &&
-                <li className='card'>
-                    <img src={data.front_default} alt={pokemon.name} />
+            {data.sprites && data.types && data.sprites.front_default  &&
+                    <li className='card'>
+                    <img src={data.sprites.front_default} alt={pokemon.name} />
                     <div className='infos'>
-                        <h2>{pokemon.name}</h2>
+                        <h3>{pokemon.name} :</h3>
+                        {
+                            data.types
+                            .map((info) => (
+                                <p>{info.type.name}</p> 
+                            ))
+                        }
+                       
                     </div>
-                </li>}
+                </li>
+                }
         </div>
     );
 };

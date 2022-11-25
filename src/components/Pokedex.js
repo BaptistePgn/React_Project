@@ -49,7 +49,7 @@ const Pokedex = () => {
                     {selectedPokemon == null &&
                         <div>
                             <input id="nbrPokemon" name="nbrPokemon" type="range" min="1" max={nombrePokemon} defaultValue={rangeValue} onChange={(e) => setrangeValue(e.target.value)} />
-                            <label for="nbrPokemon">{rangeValue} </label>
+                            <label forhtml="nbrPokemon">{rangeValue} </label>
                         </div>
                     }
                 </div>
