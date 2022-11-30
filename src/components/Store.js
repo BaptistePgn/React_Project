@@ -9,7 +9,7 @@ const PokeRequete = createSlice({
             state.push(pokemon)
         },
         deleteFavori:(state,pokemon) =>{
-            state = state.filter((t)=> t.name !== pokemon.name)
+            state = state.filter((t)=> t.payload.name !== pokemon.payload.name)
             return state
         }
     }
